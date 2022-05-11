@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link href="/fontawesome-free-6.1.1-web/css/all.css" rel="stylesheet">
+    <script>
+    $(function(){
+      $("#HeadContent").load("/head.html");
+    });
+    $(function(){
+      $("#FooterContent").load("/footer.html");
+    });
+    $(function(){
+      $("#NavbarContent").load("/navbar.html");
+    });
+    $(function(){
+      $("#HeroContent").load("/hero.html");
+    });
+    </script>
+    <div id="HeadContent"></div>
+    <!-- Leaflet for map -->
+    <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src = "/make_map.js"></script>
+  </head>
+
+  <body>
+
+  <!-- Navbar -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a href="/" class="navbar-item has-text-weight-bold">Hudson Valley Adventures</a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <div onclick="" class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Adventures
+          </a>
+          <div class="navbar-dropdown">
+            <div id="NavbarContent"></div>
+          </div>
+        </div>
+        <a href="/about/" class="navbar-item">
+          About
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="section">
+    <div id="map" class="map map-home" style="height: 600px; margin-top: 1px"></div>
+    <script>
+      var mapOptions = {
+        center: [41.1736,-73.9137],
+        zoom: 10
+      };
+      var map = L.map('map', mapOptions);
+      var showOptions = {
+        show_hikes: false,
+        show_bikes: false,
+        show_kayaks: true,
+        show_skis: false,
+        show_coords: false,
+        show_tracks: false // To add
+      };
+      makeMap(map, showOptions);
+    </script>
+  </section>
+
+  <section class="section">
+    <div class="container has-text-centered is-capitalized">
+    <p class="title is-capitalized">
+      Kayaking in the Hudson Valley
+    </p>
+    <p>
+    </p>
+  </div>
+  <section class="section">
+    <p>
+      <i class="fa-solid fa-screwdriver-wrench"></i> Work in progress!
+    </p>
+  </section>
+
+  <footer class="footer">
+    <div id="FooterContent"></div>
+  </footer>
+
+  </body>
+
+  <script>
+  $(document).ready(function() {
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function() {
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
+    });
+  });
+  </script>
+
+</html>
