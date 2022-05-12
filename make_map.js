@@ -1,7 +1,7 @@
 function makeMap(map, options) {
   // Map background
   var osmAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-  var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var osmUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
   var streets = L.tileLayer(osmUrl, {attribution: osmAttr});
   streets.addTo(map);
 
