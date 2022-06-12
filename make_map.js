@@ -35,6 +35,12 @@ function makeMap(map, options) {
       iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
   });
 
+  var icecreamIcon = L.icon({
+      iconUrl: '/fontawesome-free-6.1.1-web/svgs/solid/ice-cream.svg',
+      iconSize:     [25, 50], // size of the icon
+      iconAnchor:   [15, 30], // point of the icon which will correspond to marker's location
+  });
+
   // Hike
   var hikes = L.layerGroup();
  
@@ -128,6 +134,11 @@ function makeMap(map, options) {
   text = "<center><b>The Village Blend</b></center><br>";
   text += "Get coffee and breakfast at <a href=\"https://www.yelp.com/biz/the-village-blend-sloatsburg-2\">The Village Blend</a> in Sloatsburg, NY.";
   L.marker(coords, {icon: foodIcon}).bindPopup(text).addTo(food);
+
+  coords = [41.20818645692826, -73.88308789760455];
+  text = "<center><b>The Blue Pig</b></center><br>";
+  text += "Get ice cream at <a href=\"https://www.yelp.com/biz/the-blue-pig-croton-on-hudson-2\">The Blue Pig</a> in Croton-On-Hudson, NY.";
+  L.marker(coords, {icon: icecreamIcon}).bindPopup(text).addTo(food);
 
   // On by default
   if (options.show_hikes) {
