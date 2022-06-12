@@ -18,7 +18,7 @@ function makeMap(map, options) {
   });
   
   var kayakIcon = L.icon({
-      iconUrl: '/fontawesome-free-6.1.1-web/svgs/solid/ship.svg',
+      iconUrl: '/fontawesome-free-6.1.1-web/svgs/solid/water.svg',
       iconSize:     [40, 80], // size of the icon
       iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
   });
@@ -29,11 +29,21 @@ function makeMap(map, options) {
       iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
   });
   
+  var foodIcon = L.icon({
+      iconUrl: '/fontawesome-free-6.1.1-web/svgs/solid/utensils.svg',
+      iconSize:     [25, 50], // size of the icon
+      iconAnchor:   [20, 40], // point of the icon which will correspond to marker's location
+  });
+
   // Hike
   var hikes = L.layerGroup();
   
   L.marker([41.17593,-74.12444], {icon: hikeIcon}).bindPopup("<b>Engagement!</b><br>Get enganged here.").addTo(hikes);
   
+  L.marker([41.39175, -74.11634], {icon: hikeIcon}).bindPopup("<b>Schunnemunk State Park</b><br><a = href=\"/adventures/hiking/schunnemunk\">Hike Schunnemunk State Park.</a>").addTo(hikes);
+
+  L.marker([41.31285, -74.00631], {icon: hikeIcon}).bindPopup("<b>Bear Mountain State Park</b><br><a = href=\"/adventures/hiking/bear_mountain\">Hike Bear Mountain State Park.</a>").addTo(hikes);
+
   // Bike
   var bikes = L.layerGroup();
   
@@ -56,6 +66,11 @@ function makeMap(map, options) {
  
   L.marker([41.10458,-73.84967], {icon: skiIcon}).bindPopup("<b>Rockefeller State Park</b><br><a href=\"/adventures/skiing/rockefeller\">Cross country ski Rockefeller State Park.</a>").addTo(skis);
   
+  // Food
+  var food = L.layerGroup();
+  
+  L.marker([41.15656966954971, -74.1923937614128], {icon: foodIcon}).bindPopup("<b>The Village Blend</b><br>Get coffee and breakfast at <a href=\"https://www.yelp.com/biz/the-village-blend-sloatsburg-2\">The Village Blend</a> in Sloatsburg, NY.").addTo(food);
+
   // On by default
   if (options.show_hikes) {
     hikes.addTo(map);
@@ -69,12 +84,16 @@ function makeMap(map, options) {
   if (options.show_skis) {
     skis.addTo(map);
   }
+  if (options.show_food) {
+    food.addTo(map);
+  }
 
   var overlays = {
       'Hikes': hikes,
       'Bike Rides': bikes,
       'Kayak': kayaks,
-      'Ski': skis
+      'Ski': skis,
+      'Food': food
   };
   
   var layerControl = L.control.layers(null, overlays).addTo(map);
